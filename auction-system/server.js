@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -19,12 +18,24 @@ let auction = {
 
 let auctionEnded = false;
 
+// Function to restart the auction
+function restartAuction() {
+  auctionEnded = false;
+  auction.currentBid = 100; // Or set this to the desired initial value
+  auction.highestBidder = 'No bids yet';
+  auction.auctionEndTime = Date.now() + 300000; // Restart auction duration (5 minutes)
+
+  io.emit('auctionUpdate', auction); // Notify all clients about the auction restart
+  io.emit('timerUpdate', auction.auctionEndTime - Date.now()); // Update the timer on all clients
+}
+
 // Function to check and update auction time
 function checkAuctionTime() {
   const timeLeft = auction.auctionEndTime - Date.now();
   if (timeLeft <= 0 && !auctionEnded) {
     auctionEnded = true;
     io.emit('auctionEnded', auction.highestBidder);
+    setTimeout(restartAuction, 3000); // Wait 3 seconds before restarting the auction
   }
 }
 
