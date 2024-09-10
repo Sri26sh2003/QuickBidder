@@ -7,6 +7,7 @@ const itemNameEl = document.getElementById('item-name');
 const currentBidEl = document.getElementById('current-bid');
 const highestBidderEl = document.getElementById('highest-bidder');
 const timeRemainingEl = document.getElementById('time-remaining');
+const itemImageEl = document.getElementById('item-image'); // Image element
 const userNameEl = document.getElementById('user-name');
 const bidAmountEl = document.getElementById('bid-amount');
 const placeBidBtn = document.getElementById('place-bid');
@@ -17,6 +18,7 @@ socket.on('auctionUpdate', (auction) => {
   itemNameEl.textContent = auction.itemName;
   currentBidEl.textContent = auction.currentBid;
   highestBidderEl.textContent = auction.highestBidder;
+  itemImageEl.src = auction.itemImage; // Set the image source
   feedbackMessageEl.textContent = ''; // Clear feedback on update
 });
 

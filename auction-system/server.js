@@ -11,9 +11,10 @@ app.use(express.static('public'));
 // Auction state
 let auction = {
   itemName: 'Vintage Camera',
+  itemImage: '/images/vintage-camera.jpg', // New property for the image
   currentBid: 100,
   highestBidder: 'No bids yet',
-  auctionEndTime: Date.now() + 300000, // Auction ends in 5 minutes (300,000ms)
+  auctionEndTime: Date.now() + 300000, // Auction ends in 5 minutes
 };
 
 let auctionEnded = false;
@@ -35,7 +36,6 @@ setInterval(() => {
   }
 }, 1000);
 
-// Socket.IO connections
 io.on('connection', (socket) => {
   console.log('A user connected');
 

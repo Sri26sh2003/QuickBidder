@@ -3,26 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Auction</title>
+  <title>Quick Bidder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="auction-container">
-    <h1>Auction: <span id="item-name">Loading...</span></h1>
-    <div class="auction-details">
-      <p>Current Highest Bid: $<span id="current-bid">0</span></p>
-      <p>Highest Bidder: <span id="highest-bidder">Loading...</span></p>
-      <p>Time Remaining: <span id="time-remaining">--:--</span></p>
-    </div>
+  <!-- Header Section -->
+  <header>
+    <h1>Quick Bidder</h1>
+    <p>Auction Date: <span id="auction-date"></span></p>
+  </header>
 
-    <div class="bid-section">
-      <input type="text" id="user-name" placeholder="Enter your name" />
-      <input type="number" id="bid-amount" placeholder="Enter your bid" />
-      <button id="place-bid">Place Bid</button>
-    </div>
+  <div class="background-overlay">
+    <!-- Auction Container -->
+    <div class="auction-container">
+      <div class="auction-content">
+        <!-- Left Column: Image -->
+        <div class="auction-image">
+          <img id="item-image" src="vintage-camera.jpg" alt="Auction Item" />
+        </div>
 
-    <p id="feedback-message"></p>
+        <!-- Right Column: Bidding Details -->
+        <div class="auction-details-container">
+          <h2>Auction: <span id="item-name">Vintage Camera</span></h2>
+
+          <div class="auction-details">
+            <p><i class="fas fa-dollar-sign"></i> Current Highest Bid: $<span id="current-bid">0</span></p>
+            <p><i class="fas fa-user"></i> Highest Bidder: <span id="highest-bidder">Loading...</span></p>
+            <p><i class="fas fa-clock"></i> Time Remaining: <span id="time-remaining">--:--</span></p>
+          </div>
+
+          <!-- Bidding Section -->
+          <div class="bid-section">
+            <input type="text" id="user-name" placeholder="Enter your name" />
+            <input type="number" id="bid-amount" placeholder="Enter your bid" />
+            <button id="place-bid">Place Bid</button>
+          </div>
+
+          <p id="feedback-message"></p>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>Designed by Srisha Ashrit</p>
+  </footer>
+
+  <script>
+    // Set the auction date to today
+    const today = new Date().toLocaleDateString();
+    document.getElementById("auction-date").textContent = today;
+  </script>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
