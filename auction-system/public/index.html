@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Auction</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auction-container">
+    <h1>Auction: <span id="item-name">Loading...</span></h1>
+    <div class="auction-details">
+      <p>Current Highest Bid: $<span id="current-bid">0</span></p>
+      <p>Highest Bidder: <span id="highest-bidder">Loading...</span></p>
+      <p>Time Remaining: <span id="time-remaining">--:--</span></p>
+    </div>
+
+    <div class="bid-section">
+      <input type="text" id="user-name" placeholder="Enter your name" />
+      <input type="number" id="bid-amount" placeholder="Enter your bid" />
+      <button id="place-bid">Place Bid</button>
+    </div>
+
+    <p id="feedback-message"></p>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
