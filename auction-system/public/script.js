@@ -58,3 +58,12 @@ placeBidBtn.addEventListener('click', () => {
 socket.on('timerExtended', (message) => {
   feedbackMessageEl.textContent = message;
 });
+// the header left side and right side feels empty suggest some additions to fill it also in footer and implement it also include some more animations and corosole features where required and regenarate where should i make changes
+// /auction-system
+//    /public
+//       - index.html
+//       - style.css
+//       - script.js
+//    - server.js
+//    /node_modules
+//    - package.json
